@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+
+  php-fpm:
+    container_name: ${APP_NAME}-php-fpm
+    build:
+      context: ./docker/php-fpm
+      args:
+        - PUID=${PUID}
+        - PGID=${PGID}
+    environment:
+      PHP_IDE_CONFIG: ${PHP_IDE_CONFIG:-serverName=docker}
+      XDEBUG_MODE: ${XDEBUG_MODE:-off}
+      XDEBUG_CONFIG: "client_host=host.docker.internal"
+    volumes:
+      - ./:/var/www
+      - ./docker/logs:/var/log
+    ports:
+      - "3000:3000"
+    extra_hosts:
+      - host.docker.internal:${HOST_IP:-172.17.0.1}
+
+  www:
+    container_name: ${APP_NAME}-www
+    build:
+      context: ./docker/nginx
+    volumes:
+      - ./:/var/www:rw
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/sites/:/etc/nginx/sites-available
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d
+      - ./docker/nginx/ssl:/etc/nginx/ssl
+      - ./docker/logs:/var/log
+    depends_on:
+      - php-fpm
+    ports:
+      - "80:80"
+      - "443:443"
