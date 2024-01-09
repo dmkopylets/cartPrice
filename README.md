@@ -30,7 +30,7 @@ make composer-i
 
 **it will be possible to test the application at localhost**
 
-**  http://localhost/process-payload - now you can send your payload here
+http://localhost/process-payload - now you can send your payload here
     ![requestSending.png](docs%2FrequestSending.png)  
  
 
