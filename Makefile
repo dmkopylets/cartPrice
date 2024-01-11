@@ -27,11 +27,13 @@ composer-i:
 	$(EXEC_PHP) sh -c " composer install"
 
 clear-cache:
-	$(EXEC_PHP) bash -c " php artisan route:clear &&  php artisan config:cache && php artisan view:clear && php artisan route:clear && php artisan optimize:clear"
+	$(EXEC_PHP) bash -c "rm -rf var"
 
 nginx-restart:
 	cd docker; docker exec -it www sh -c "nginx -t && nginx -s reload"
 
 swagger-generate:
-	$(EXEC_PHP) sh -c " php artisan l5-swagger:generate"
+	$(EXEC_PHP) sh -c "./vendor/bin/openapi /var/www/src -o /var/www/api/openApi/swagger.json"
 
+coverage:
+	$(EXEC_PHP) sh -c " ./bin/phpunit --coverage-html coverage"

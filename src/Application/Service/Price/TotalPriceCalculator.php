@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace App\Application\Service\Price;
 
-use Symfony\Contracts\HttpClient\HttpClientInterface;
-
 class TotalPriceCalculator
 {
-    private string $openExchangeRatesApiKey;
+    private ExchangeRatesFetcher $exchangeRatesFetcher;
 
-    public function __construct()
+    public function __construct(ExchangeRatesFetcher $exchangeRatesFetcher)
     {
-        $this->openExchangeRatesApiKey = $_ENV['OPENEXCHANGERATES_API_KEY'];
+        $this->exchangeRatesFetcher = $exchangeRatesFetcher;
     }
 
     public function calculate(array $items, array $exchangeRates, string $checkoutCurrency): float
@@ -34,23 +32,6 @@ class TotalPriceCalculator
 
     public function getExchangeRates(): ?array
     {
-        try {
-            $oxrUrl = "https://openexchangerates.org/api/latest.json?app_id=" . $this->openExchangeRatesApiKey;
-
-            // Open CURL session:
-            $ch = curl_init($oxrUrl);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-            // Get the data:
-            $response = curl_exec($ch);
-            curl_close($ch);
-
-            // Decode JSON response:
-            $oxrLatest = json_decode($response, true);
-
-            return $oxrLatest;
-        } catch (\Exception $e) {
-            return null;
-        }
+        return $this->exchangeRatesFetcher->getExchangeRates();
     }
 }
