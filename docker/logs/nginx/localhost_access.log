@@ -84,3 +84,8 @@
 172.19.0.1 - - [12/Jan/2024:10:30:41 +0000] "POST /process-payload HTTP/1.1" 200 59 "http://localhost/doc/" "Mozilla/5.0 (X11; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0"
 172.19.0.1 - - [12/Jan/2024:10:31:15 +0000] "GET /doc/ HTTP/1.1" 304 0 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0"
 172.19.0.1 - - [12/Jan/2024:10:31:15 +0000] "GET /doc/swagger.json/ HTTP/1.1" 304 0 "http://localhost/doc/" "Mozilla/5.0 (X11; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0"
+172.19.0.1 - - [12/Jan/2024:10:35:52 +0000] "GET / HTTP/1.1" 404 9481 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0"
+172.19.0.1 - - [12/Jan/2024:10:35:58 +0000] "GET /doc HTTP/1.1" 301 162 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0"
+172.19.0.1 - - [12/Jan/2024:10:35:58 +0000] "GET /doc/favicon-16x16.png HTTP/1.1" 200 665 "http://localhost/doc/" "Mozilla/5.0 (X11; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0"
+172.19.0.1 - - [12/Jan/2024:10:35:58 +0000] "GET /doc/swagger.json HTTP/1.1" 301 162 "http://localhost/doc/" "Mozilla/5.0 (X11; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0"
+172.19.0.1 - - [12/Jan/2024:10:35:58 +0000] "GET /doc/swagger.json/ HTTP/1.1" 200 2516 "http://localhost/doc/" "Mozilla/5.0 (X11; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0"

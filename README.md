@@ -34,13 +34,16 @@ http://localhost/process-payload - now you can send your payload here
     ![requestSending.png](docs%2FrequestSending.png)  
  
 
+**Swagger API documentation for test task**
+[swagger documentation](http://localhost/doc/)
+    ![swagger.png](docs%2Fswagger.png) 
+
+**the level of test coverage can be estimated here**
+
 and to stop docker containers use 
 
 **make dc-down**
 
-
-
-**the level of test coverage can be estimated here**
 
 [tests coverage](https://github.com/dmkopylets/cartPrice/tree/main/docs/coverage/index.html)
     ![coverage.png](docs%2Fcoverage.png)  
