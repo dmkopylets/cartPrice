@@ -16,6 +16,18 @@ use OpenApi\Annotations as OA;
  **/
 class PriceController extends AbstractController
 {
+
+    /**
+     * @OA\Info(
+     *     title="Swagger API documentation for test task",
+     *     version="1.0.0",
+     *     @OA\Contact(
+     *         name="Dmytro",
+     *         email="dm.kopylets@gmail.com"
+     *         )
+     * )
+     *
+     */
     public function __construct(public TotalPriceCalculator $calculator)
     {
     }
@@ -26,12 +38,37 @@ class PriceController extends AbstractController
      *     path="/process-payload",
      *     summary="main action",
      *     operationId="processPayload",
-     *     tags={"Price"}
-     * @OA\Response(
-     *     response=200,
-     *     description="successful operation",
-     *     @OA\MediaType(
-     *         mediaType="application/json",
+     *     tags={"Price"},
+     *     @OA\RequestBody(
+     *         description="Client side request",
+     *         required=true,
+     *         @OA\MediaType(
+    *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 type="object",
+     *                 @OA\Property(
+     *                     property="items",
+     *                     type="object",
+     *                     additionalProperties={
+     *                         "type"="object",
+     *                         "properties"={
+     *                             "currency"={"type"="string"},
+     *                             "price"={"type"="number"},
+     *                             "quantity"={"type"="integer"}
+     *                         }
+     *                     }
+     *                 ),
+     *                 @OA\Property(
+     *                     property="checkoutCurrency",
+     *                     type="string"
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent()
      *     )
      * )
      */
