@@ -39,3 +39,8 @@ and to stop docker containers use
 **make dc-down**
 
 
+
+**the level of test coverage can be estimated here**
+
+[tests coverage](https://github.com/dmkopylets/cartPrice/docs/coverage/index.html)
+    ![coverage.png](docs%2Fcoverage.png)  
